@@ -23,9 +23,8 @@ const swaggerOptions = {
   apis: ["./routes/rolesSample.js"], // specify the path to API routes files
 };
 const swaggerSpec = swaggerJSDocs(swaggerOptions);
-rolesSampleRouter.use("/api-docs",swaggerUi.serve)
-rolesSampleRouter.get("/api-docs",swaggerUi.setup(swaggerSpec)); // Serve Swagger UI at /api-docs endpoint
-
+rolesSampleRouter.use("/api-docs",swaggerUi.serve,swaggerUi.setup(swaggerSpec))
+// rolesSampleRouter.get("/api-docs",swaggerUi.setup(swaggerSpec)); // Serve Swagger UI at /api-docs endpoint
 rolesSampleRouter.get("/sample-roles", rolesSampleController.get);
 
 /**
