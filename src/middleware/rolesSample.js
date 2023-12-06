@@ -1,9 +1,9 @@
 const express = require("express");
 const app = express();
-const { body,validationResult } = require("express-validator");
+const { body, validationResult } = require("express-validator");
 validateInput = [
-    app.use(express.json()),
-    body()
+  app.use(express.json()),
+  body()
     .custom((payload, { req }) => {
       const keys = Object.keys(payload);
       const nameRegex = /^[a-zA-Z\s]+$/;
@@ -19,12 +19,12 @@ validateInput = [
       return true;
     })
     .bail(),
-    (req, res, next) => {
-        const errors = validationResult(req);
-        if (!errors.isEmpty()) {
-          return res.status(400).json({ errors: errors.array() });
-        }
-        next();
-      },
-]
-module.exports = validateInput
+  (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+    next();
+  },
+];
+module.exports = validateInput;

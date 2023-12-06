@@ -1,9 +1,9 @@
-const express = require('express')
-const rolesSampleRouter = express.Router()
+const express = require("express");
+const rolesSampleRouter = express.Router();
 const rolesSampleController = require("../controllers/rolesSample.js");
-const validateInput = require("../middleware/rolesSample.js")
+const validateInput = require("../middleware/rolesSample.js");
 
-rolesSampleRouter.get('/sample-roles',rolesSampleController.get);
+rolesSampleRouter.get("/sample-roles", rolesSampleController.get);
 
 /**
  * @swagger
@@ -20,14 +20,13 @@ rolesSampleRouter.get('/sample-roles',rolesSampleController.get);
  *     responses:
  *       200:
  *         description: department added
- *         produces:
- *           - text/plain
  *       400:
  *         description: Department already exists in the database
- *         produces:
- *           - text/plain
  */
 
-
-rolesSampleRouter.post('/sample-roles',validateInput,rolesSampleController.post)
-module.exports = {rolesSampleRouter};
+rolesSampleRouter.post(
+  "/sample-roles",
+  validateInput,
+  rolesSampleController.post
+);
+module.exports = { rolesSampleRouter };
