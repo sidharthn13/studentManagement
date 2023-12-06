@@ -3,26 +3,31 @@ const rolesSampleRouter = express.Router()
 const rolesSampleController = require("../controllers/rolesSample.js");
 const validateInput = require("../middleware/rolesSample.js")
 
-//using swagger dependencies
-const swaggerJSDocs = require("swagger-jsdoc");
-const swaggerOptions = {
-    definition: {
-      openapi: "3.0.0",
-      info: {
-        title: "Student Management API Documentation ",
-        version: "1.0.0",
-        description: "Manage student and department records using postgresql",
-      },
-      servers: [
-        {
-          url: `http://localhost:3000`,
-        },
-      ],
-    },
-    apis: ["./rolesSample.js"], // specify the path to API routes files
-  };
-const swaggerSpec = swaggerJSDocs(swaggerOptions);
-
 rolesSampleRouter.get('/sample-roles',rolesSampleController.get);
+
+/**
+ * @swagger
+ * /sample-roles:
+ *   post:
+ *     summary: Create a department
+ *     description: Creates a new unique department and assigns a unique integer ID
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           example:
+ *             role: admin
+ *     responses:
+ *       200:
+ *         description: department added
+ *         produces:
+ *           - text/plain
+ *       400:
+ *         description: Department already exists in the database
+ *         produces:
+ *           - text/plain
+ */
+
+
 rolesSampleRouter.post('/sample-roles',validateInput,rolesSampleController.post)
-module.exports = {rolesSampleRouter,swaggerSpec};
+module.exports = {rolesSampleRouter};
