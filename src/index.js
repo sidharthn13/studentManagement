@@ -11,7 +11,6 @@ const sequelize = require("./config/database.js");
 // }
 
 const rolesSampleRouter = require("./routes/rolesSample.js");
-app.use("/sample", rolesSampleRouter);
-// app.use("/sample1",(req,res)=>{return res.end("req received")})
+app.use("/v1", rolesSampleRouter);
 app.listen(3000, () => console.log('Server listening at port 3000'));
 

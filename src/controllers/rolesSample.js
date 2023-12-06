@@ -8,4 +8,4 @@ const rolesSampleController = (req, res) => {
     return res.end("request received");
   };
   
-  module.exports = { get: rolesSampleController };
+  module.exports = { get: rolesSampleController ,};
