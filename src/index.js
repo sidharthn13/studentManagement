@@ -1,7 +1,17 @@
-const sequelize = require("./config/database.js")
-try {
-    sequelize.authenticate();
-    console.log('Connection has been established successfully.');
-  } catch (error) {
-    console.error('Unable to connect to the database:', error);
-  }
+const express = require("express");
+const app = express();
+const sequelize = require("./config/database.js");
+
+// Uncomment this block if you want to check the database connection
+// try {
+//   sequelize.authenticate();
+//   console.log('Connection has been established successfully.');
+// } catch (error) {
+//   console.error('Unable to connect to the database:', error);
+// }
+
+const rolesSampleRouter = require("./routes/rolesSample.js");
+app.use("/sample", rolesSampleRouter);
+// app.use("/sample1",(req,res)=>{return res.end("req received")})
+app.listen(3000, () => console.log('Server listening at port 3000'));
+
