@@ -3,6 +3,29 @@ const rolesSampleRouter = express.Router();
 const rolesSampleController = require("../controllers/rolesSample.js");
 const validateInput = require("../middleware/rolesSample.js");
 
+//setting up swagger docs
+const swaggerUi = require("swagger-ui-express");
+const swaggerJSDocs = require("swagger-jsdoc");
+const swaggerOptions = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "Student Management API Documentation ",
+      version: "1.0.0",
+      description: "Manage student and department records using postgresql",
+    },
+    servers: [
+      {
+        url: `http://localhost:3000/v1`,
+      },
+    ],
+  },
+  apis: ["./routes/rolesSample.js"], // specify the path to API routes files
+};
+const swaggerSpec = swaggerJSDocs(swaggerOptions);
+rolesSampleRouter.use("/api-docs",swaggerUi.serve)
+rolesSampleRouter.get("/api-docs",swaggerUi.setup(swaggerSpec)); // Serve Swagger UI at /api-docs endpoint
+
 rolesSampleRouter.get("/sample-roles", rolesSampleController.get);
 
 /**
