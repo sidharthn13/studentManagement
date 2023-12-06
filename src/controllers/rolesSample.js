@@ -1,11 +1,13 @@
-// const rolesSampleController = {
-//     get: function(req, res){
-//       res.send('GET request received for /sample');
-//     }
-//   };
-
-const rolesSampleController = (req, res) => {
-    return res.end("request received");
-  };
+const sequelize = require("../config/database.js")
+const rolesSampleController = {
+    get:(req, res) => {
+        return res.end("request received");
+      },
+    post:(req,res)=>{
+        const payload = req.body
+        console.log(payload.role)
+        res.end(payload.role)
+    }
+}
   
-  module.exports = { get: rolesSampleController ,};
+  module.exports = rolesSampleController ;
