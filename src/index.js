@@ -10,15 +10,18 @@ const scores = require("./models/scores.js")
 const users = require("./models/users.js")
 
 app.use("/v1", rolesSampleRouter);
-app.listen(3000, () => {
-  console.log("Server listening at port 3000");
-  students.sync().then(console.log("student table created"));
-  departments.sync().then(console.log("departments table created"));
-  roles.sync().then(console.log("roles table created"));
-  scores.sync().then(console.log("scores table created"));
-  users.sync().then(console.log("users table created"));
+app.listen(3000, async() => {
+  // console.log("Server listening at port 3000");
+  // students.sync().then(console.log("student table created"));
+  // departments.sync().then(console.log("departments table created"));
+  // roles.sync().then(console.log("roles table created"));
+  // scores.sync().then(console.log("scores table created"));
+  // users.sync().then(console.log("users table created"));
 
+  await sequelize.sync();
+  // await sequelize.drop()
 
+  
   // sequelize.sync().then(console.log("all tables created"));
   // generate_rows()
 });
