@@ -1,16 +1,17 @@
 const {DataTypes} = require("sequelize")
 const sequelize = require("../config/database.js")
-const scores = sequelize.define("scores", {
-    studentID:{
+const students = sequelize.define("students",{
+    id:{
         type:DataTypes.INTEGER,
-        allowNull:false,
+        primaryKey:true,
+        autoIncrement:true
     },
-    courseID:{
-        type:DataTypes.INTEGER,
+    name:{
+        type:DataTypes.STRING(20),
         allowNull:false
     },
-    score:{
-        type:DataTypes.STRING(20),
+    department:{
+        type:DataTypes.INTEGER,
         allowNull:false
     },
     createdBy:{
@@ -19,8 +20,7 @@ const scores = sequelize.define("scores", {
     },
     updatedBy:{
         type:DataTypes.STRING(20),
-        allowNull:true
+        allowNull:false
     }
-})
-scores.removeAttribute("id")
-module.exports = scores;
+});
+module.exports = students;
