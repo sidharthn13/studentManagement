@@ -19,4 +19,7 @@ module.exports ={
           res.status(400).json({ Error: error.message });
         }
       },
+
+    getRole: (req, res) => {
+        return res.end("request received")},
 }

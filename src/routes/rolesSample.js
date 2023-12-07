@@ -25,7 +25,7 @@ const swaggerOptions = {
 const swaggerSpec = swaggerJSDocs(swaggerOptions);
 rolesSampleRouter.use("/api-docs",swaggerUi.serve,swaggerUi.setup(swaggerSpec))
 // rolesSampleRouter.get("/api-docs",swaggerUi.setup(swaggerSpec)); // Serve Swagger UI at /api-docs endpoint
-rolesSampleRouter.get("/sample-roles", rolesSampleController.get);
+rolesSampleRouter.get("/sample-roles", rolesSampleController.getUsers);
 
 /**
  * @swagger
@@ -49,6 +49,6 @@ rolesSampleRouter.get("/sample-roles", rolesSampleController.get);
 rolesSampleRouter.post(
   "/sample-roles",
   validateInput,
-  rolesSampleController.post
+  rolesSampleController.createUser
 );
 module.exports = { rolesSampleRouter };
