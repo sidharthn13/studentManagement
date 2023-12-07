@@ -1,5 +1,6 @@
 const {DataTypes} = require("sequelize")
 const sequelize = require("../config/database.js")
+const departments = require("./departments.js")
 const students = sequelize.define("students",{
     id:{
         type:DataTypes.INTEGER,
@@ -12,7 +13,12 @@ const students = sequelize.define("students",{
     },
     department:{
         type:DataTypes.INTEGER,
-        allowNull:false
+        allowNull:false,
+        // references:{
+        //     model:departments,
+        //     key:"id",
+        //     onDelete:"CASCADE"
+        // }
     },
     createdBy:{
         type:DataTypes.STRING(20),
@@ -23,4 +29,7 @@ const students = sequelize.define("students",{
         allowNull:false
     }
 });
+students.belongsTo(departments, {as:"dept", foreignKey: "department", onDelete: 'CASCADE' });
+departments.hasMany(students,{foreignKey:"department"});
+
 module.exports = students;
