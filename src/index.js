@@ -6,6 +6,7 @@ const { rolesSampleRouter } = require("./routes/rolesSample.js");
 const roles = require("./models/roles.js")
 const users = require("./models/users.js")
 const students = require("./models/students.js")
+const courses = require("./models/courses.js")
 const departments = require("./models/departments.js");
 const scores = require("./models/scores.js")
 

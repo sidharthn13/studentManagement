@@ -1,5 +1,6 @@
 const {DataTypes}= require("sequelize")
 const sequelize = require("../config/database.js")
+const courses = require("./courses.js")
 const departments = sequelize.define("departments",{
     id:{
         type:DataTypes.INTEGER,
@@ -19,4 +20,6 @@ const departments = sequelize.define("departments",{
         allowNull:false
     }
 });
+departments.belongsToMany(courses,{through:"DepartmentsCourses"})
+courses.belongsToMany(departments,{through:"DepartmentsCourses"})
 module.exports = departments;

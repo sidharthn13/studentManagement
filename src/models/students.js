@@ -30,6 +30,6 @@ const students = sequelize.define("students",{
     }
 });
 students.belongsTo(departments, {as:"StudentDept", foreignKey: "department", onDelete: 'CASCADE' });
-departments.hasMany(students,{foreignKey:"department"});
+departments.hasMany(students,{foreignKey:"department", onDelete: 'CASCADE'});
 
 module.exports = students;
