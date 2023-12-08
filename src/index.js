@@ -21,7 +21,6 @@ app.listen(3000, async() => {
 
   await sequelize.sync();
   // await sequelize.drop()
-
   
   // sequelize.sync().then(console.log("all tables created"));
   // generate_rows()
@@ -29,7 +28,7 @@ app.listen(3000, async() => {
 
 
 
-//testing
+//function to insert seed data
 
 // async function generate_rows() {
 //   const departmentData = [
@@ -47,10 +46,30 @@ app.listen(3000, async() => {
 //       updatedBy:"staff"
 //     }
 //   ];
+//   const rolesData = [
+//     {
+//       role: "admin"
+//     },
+//     {
+//       role: "staff"
+//     }
+//   ];
+//   const usersData = [
+//     {
+//       email: "admin@gmail.com",
+//       password: "password",
+//       name:"admin" ,
+//       role: 1
+//     }
+//   ]
+
 //   try {
 //     const department = await departments.bulkCreate(departmentData);
 //     const student = await students.bulkCreate(studentData);
+//     const role = await roles.bulkCreate(rolesData)
+//     const user = await users.bulkCreate(usersData)
 //   } catch (error) {
 //     console.log(`warning, error: ${error}`);
 //   }
 // }
+

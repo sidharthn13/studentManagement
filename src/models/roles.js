@@ -10,5 +10,8 @@ const roles = sequelize.define("roles", {
     type: DataTypes.STRING(50),
     allowNull: false,
   },
+  // createdAt:{type:Date,
+  //   timestamps:true},
+  // updatedAt:{type:Date,timestamps:true}
 });
 module.exports = roles;
