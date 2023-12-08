@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const sequelize = require("./config/database.js")
 const { rolesSampleRouter } = require("./routes/rolesSample.js");
+const loginRouter= require("./routes/login.js")
 
 const roles = require("./models/roles.js")
 const users = require("./models/users.js")
@@ -11,6 +12,9 @@ const departments = require("./models/departments.js");
 const scores = require("./models/scores.js")
 
 app.use("/v1", rolesSampleRouter);
+app.use("/v1", loginRouter);
+
+
 app.listen(3000, async() => {
   // console.log("Server listening at port 3000");
   // students.sync().then(console.log("student table created"));
