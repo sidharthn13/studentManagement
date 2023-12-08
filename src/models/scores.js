@@ -1,5 +1,7 @@
 const {DataTypes} = require("sequelize")
 const sequelize = require("../config/database.js")
+const students = require("./students.js")
+const courses = require("./courses.js")
 const scores = sequelize.define("scores", {
     studentID:{
         type:DataTypes.INTEGER,
@@ -7,10 +9,10 @@ const scores = sequelize.define("scores", {
     },
     courseID:{
         type:DataTypes.INTEGER,
-        allowNull:false
+        allowNull:false,
     },
     score:{
-        type:DataTypes.STRING(20),
+        type:DataTypes.INTEGER,
         allowNull:false
     },
     createdBy:{
@@ -22,5 +24,6 @@ const scores = sequelize.define("scores", {
         allowNull:true
     }
 })
-scores.removeAttribute("id")
+students.belongsToMany(courses,{through:scores,foreignKey:"studentID",onDelete:"CASCADE",onUpdate:"CASCADE"});
+courses.belongsToMany(students,{through:scores,foreignKey:"courseID",onDelete:"CASCADE",onUpdate:"CASCADE"});
 module.exports = scores;
