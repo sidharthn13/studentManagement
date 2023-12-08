@@ -1,5 +1,6 @@
 const {DataTypes} = require("sequelize")
 const sequelize = require("../config/database.js")
+const roles = require("./roles.js")
 const users = sequelize.define("users", {
     id:{
         type:DataTypes.INTEGER,
@@ -28,4 +29,6 @@ const users = sequelize.define("users", {
         allowNull:true
     }
 })
+users.belongsTo(roles,{as:"UserRole", foreignKey: "role", onDelete: 'CASCADE'});
+roles.hasMany(users,{foreignKey:"role"})
 module.exports = users

@@ -3,11 +3,11 @@ const app = express();
 const sequelize = require("./config/database.js")
 const { rolesSampleRouter } = require("./routes/rolesSample.js");
 
+const roles = require("./models/roles.js")
+const users = require("./models/users.js")
 const students = require("./models/students.js")
 const departments = require("./models/departments.js");
-const roles = require("./models/roles.js")
 const scores = require("./models/scores.js")
-const users = require("./models/users.js")
 
 app.use("/v1", rolesSampleRouter);
 app.listen(3000, async() => {

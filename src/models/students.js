@@ -29,7 +29,7 @@ const students = sequelize.define("students",{
         allowNull:false
     }
 });
-students.belongsTo(departments, {as:"dept", foreignKey: "department", onDelete: 'CASCADE' });
+students.belongsTo(departments, {as:"StudentDept", foreignKey: "department", onDelete: 'CASCADE' });
 departments.hasMany(students,{foreignKey:"department"});
 
 module.exports = students;
