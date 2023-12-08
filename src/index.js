@@ -3,6 +3,7 @@ const app = express();
 const sequelize = require("./config/database.js")
 const { rolesSampleRouter } = require("./routes/rolesSample.js");
 const loginRouter= require("./routes/login.js")
+const usersRouter = require("./routes/users.js")
 
 const roles = require("./models/roles.js")
 const users = require("./models/users.js")
@@ -13,6 +14,7 @@ const scores = require("./models/scores.js")
 
 app.use("/v1", rolesSampleRouter);
 app.use("/v1", loginRouter);
+app.use("/v1", usersRouter);
 
 
 app.listen(3000, async() => {
