@@ -10,6 +10,5 @@ const usersService = {
             res.status(500).json({"Error":error})
         }
     }
-
 }
 module.exports = usersService

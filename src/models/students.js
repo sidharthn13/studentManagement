@@ -26,7 +26,7 @@ const students = sequelize.define("students",{
     },
     updatedBy:{
         type:DataTypes.STRING(20),
-        allowNull:false
+        allowNull:true
     }
 });
 students.belongsTo(departments, {as:"StudentDept", foreignKey: "department", onDelete: 'CASCADE' });

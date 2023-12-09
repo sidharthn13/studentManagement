@@ -17,7 +17,7 @@ const departments = sequelize.define("departments",{
     },
     updatedBy:{
         type:DataTypes.STRING(20),
-        allowNull:false
+        allowNull:true
     }
 });
 departments.belongsToMany(courses,{through:"DepartmentsCourses"})
