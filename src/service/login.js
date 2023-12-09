@@ -11,8 +11,8 @@ module.exports = {
         const secretKey = process.env.SECRET_KEY
         // const refreshKey = process.env.REFRESH_SECRET
         const tokenPayload ={userID:searchResult.id,role:searchResult.role}
-        const accessToken = jwt.sign(tokenPayload, secretKey, { expiresIn: "10m" });
-        res.cookie("accessToken", accessToken,{ httpOnly: true });
+        const jwtToken = jwt.sign(tokenPayload, secretKey, { expiresIn: "10m" });
+        res.cookie("jwtToken", jwtToken,{ httpOnly: true });
         return res.status(200).end("log in successful");    
     }
 }

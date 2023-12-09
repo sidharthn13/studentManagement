@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken")
 const dotenv = require("dotenv");
 dotenv.config({ path: "/home/sidharth/Git-Commits/Student-Management/studentManagement/.env" });
 const authenticationMiddleware = (req,res,next)=>{
-    const token = req.cookie.accessToken;
+    const token = req.headers.cookie.split("=")[1]
     if(!token){return res.end("Please login")}
     jwt.verify( token, process.env.SECRET_KEY, (error, result) => {
         if (error) {
@@ -12,4 +12,4 @@ const authenticationMiddleware = (req,res,next)=>{
 
 }
 module.exports = authenticationMiddleware
-        
+
