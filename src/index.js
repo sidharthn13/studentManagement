@@ -72,12 +72,12 @@ app.listen(3000, async() => {
 //   ]
 
 //   try {
-    // const department = await departments.bulkCreate(departmentData);
-    // const student = await students.bulkCreate(studentData);
-  //   const role = await roles.bulkCreate(rolesData)
-  //   const user = await users.bulkCreate(usersData)
-  // } catch (error) {
-  //   console.log(`warning, error: ${error}`);
-  // }
+//     const department = await departments.bulkCreate(departmentData);
+//     const student = await students.bulkCreate(studentData);
+//     const role = await roles.bulkCreate(rolesData)
+//     const user = await users.bulkCreate(usersData)
+//   } catch (error) {
+//     console.log(`warning, error: ${error}`);
+//   }
 // }
 

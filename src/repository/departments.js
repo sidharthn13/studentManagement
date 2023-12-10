@@ -7,5 +7,9 @@ const departmentsRepository ={
         });
         return searchResult;
     },
+    getAllEntries: async function(){
+        const searchResult =await departments.findAll()
+        return searchResult;
+    }
 }
 module.exports = departmentsRepository

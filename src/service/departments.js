@@ -10,6 +10,15 @@ const departmentsService ={
         catch(error){
             return res.status(500).json({"Error":error});
         }
+    },
+    getAll: async(req,res)=>{
+        try{
+            const data = await departmentsRepository.getAllEntries();
+            res.status(200).json({"Departments":data}) 
+        }
+        catch(error){
+            return res.status(500).json({"Error":error});
+        }
     }
 }
 module.exports = departmentsService

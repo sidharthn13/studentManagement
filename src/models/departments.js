@@ -12,11 +12,11 @@ const departments = sequelize.define("departments",{
         allowNull:false
     },
     createdBy:{
-        type:DataTypes.STRING(20),
+        type:DataTypes.INTEGER,
         allowNull:false
     },
     updatedBy:{
-        type:DataTypes.STRING(20),
+        type:DataTypes.INTEGER,
         allowNull:true
     }
 });
