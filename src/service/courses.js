@@ -11,10 +11,11 @@ const coursesService ={
         if(!searchResult[1]){return res.status(400).json({Error:"course already exists"})}
         const newData = {departmentId:data.departmentID,
                         courseId:searchResult[0].id}
-        // console.log(newData)
-        await coursesRepository.mapCourseToDepartment(newData)
+        await coursesRepository.mapCourseToDepartment(searchResult[0],department)
         return res.status(200).json({Success:"Course added"})}
         catch(error){return res.status(500).json({Error:error})}
+        
+        
     }
 }
 module.exports = coursesService;
