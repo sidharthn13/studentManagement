@@ -6,11 +6,22 @@ const validateDepartmentsData = require("../middleware/departments");
 const departmentsController = require("../controllers/departments");
 departmentsRouter.post(
   "/departments",
-  validateDepartmentsData,
+  validateDepartmentsData.validateInputFields,
   authenticationMiddleware,
   authorizationMiddleware.createByAdmin,
   departmentsController.createDepartment
 );
-departmentsRouter.get("/departments",authenticationMiddleware,  authorizationMiddleware.accessByAdmin,
- departmentsController.getDepartments)
+departmentsRouter.get(
+  "/departments",
+  authenticationMiddleware,
+  authorizationMiddleware.accessByAdmin,
+  departmentsController.getDepartments
+);
+departmentsRouter.get(
+  "/departments/:id",
+  validateDepartmentsData.sanitizeRequestParam,
+  authenticationMiddleware,
+  authorizationMiddleware.accessByAdmin,
+departmentsController.getDepartmentByID
+);
 module.exports = departmentsRouter;

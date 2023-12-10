@@ -10,6 +10,10 @@ const departmentsRepository ={
     getAllEntries: async function(){
         const searchResult =await departments.findAll()
         return searchResult;
+    },
+    getByID: async function(id){
+        const searchResult = await departments.findByPk(id)
+        return searchResult;
     }
 }
 module.exports = departmentsRepository
