@@ -31,4 +31,12 @@ departmentsRouter.delete(
   authorizationMiddleware.accessByAdmin,
   departmentsController.deleteDepartment
 );
+departmentsRouter.put(
+  "/departments/:id",
+  validateDepartmentsData.validateInputFields,
+  validateDepartmentsData.sanitizeRequestParam,
+  authenticationMiddleware,
+  authorizationMiddleware.updateByAdmin,
+  departmentsController.updateDepartment
+);
 module.exports = departmentsRouter;

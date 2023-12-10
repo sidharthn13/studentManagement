@@ -4,5 +4,6 @@ const departmentsController = {
     getDepartments:departmentsService.getAll,
     getDepartmentByID:departmentsService.getByID,
     deleteDepartment:departmentsService.deleteByID,
+    updateDepartment:departmentsService.updateByID,
 }
 module.exports = departmentsController

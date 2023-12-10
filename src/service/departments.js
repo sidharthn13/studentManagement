@@ -29,15 +29,31 @@ const departmentsService = {
       return res.status(400).json({ Error: error });
     }
   },
-  deleteByID: async(req,res)=>{
-    try{
-        const id = req.params.id;
-        deleted = await departmentsRepository.deleteByID(id);
-        if(deleted==0){return res.status(400).json({Error:"No dept with that id"})}
-        return res.status(200).json({success:`dept with id ${id} deleted from DB`})
+  deleteByID: async (req, res) => {
+    try {
+      const id = req.params.id;
+      deleted = await departmentsRepository.deleteByID(id);
+      if (deleted == 0) {
+        return res.status(400).json({ Error: "No dept with that id" });
+      }
+      return res
+        .status(200)
+        .json({ success: `dept with id ${id} deleted from DB` });
+    } catch (error) {
+      return res.status(500).json({ Error: error });
     }
-    catch(error){
-        return res.status(500).json({Error:error})
+  },
+  updateByID: async (req, res) => {
+    try {
+      const id = req.params.id;
+      const newData = req.body;
+      const updated = await departmentsRepository.updateByID(id, newData);
+      if (updated == 0) {
+        return res.status(400).json({ Error: "No department with that id" });
+      }
+      return res.status(200).json({ Success: `Dept with id ${id} updated` });
+    } catch (error) {
+      return res.status(500).json({ Error: error });
     }
   },
 };
