@@ -14,6 +14,10 @@ const departmentsRepository ={
     getByID: async function(id){
         const searchResult = await departments.findByPk(id)
         return searchResult;
+    },
+    deleteByID: async function(id){
+        const result = await departments.destroy({ where: { id: id } }); 
+        return result
     }
 }
 module.exports = departmentsRepository

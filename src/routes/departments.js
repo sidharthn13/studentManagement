@@ -22,6 +22,13 @@ departmentsRouter.get(
   validateDepartmentsData.sanitizeRequestParam,
   authenticationMiddleware,
   authorizationMiddleware.accessByAdmin,
-departmentsController.getDepartmentByID
+  departmentsController.getDepartmentByID
+);
+departmentsRouter.delete(
+  "/departments/:id",
+  validateDepartmentsData.sanitizeRequestParam,
+  authenticationMiddleware,
+  authorizationMiddleware.accessByAdmin,
+  departmentsController.deleteDepartment
 );
 module.exports = departmentsRouter;

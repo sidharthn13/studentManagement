@@ -29,5 +29,16 @@ const departmentsService = {
       return res.status(400).json({ Error: error });
     }
   },
+  deleteByID: async(req,res)=>{
+    try{
+        const id = req.params.id;
+        deleted = await departmentsRepository.deleteByID(id);
+        if(deleted==0){return res.status(400).json({Error:"No dept with that id"})}
+        return res.status(200).json({success:`dept with id ${id} deleted from DB`})
+    }
+    catch(error){
+        return res.status(500).json({Error:error})
+    }
+  },
 };
 module.exports = departmentsService;
