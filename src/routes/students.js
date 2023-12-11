@@ -11,11 +11,24 @@ studentsRouter.post(
   authorizationMiddleware.createByStaff,
   studentsController.createStudent
 );
-studentsRouter.get("/students",
-validateStudentsData.sanitizeRequestParam,
-authenticationMiddleware,
-authorizationMiddleware.accessByAdminAndStaff,studentsController.getStudents);
-studentsRouter.get("/students/:id",
-authenticationMiddleware,authorizationMiddleware.accessByAdminAndStaff,
-studentsController.getStudentByID)
+studentsRouter.get(
+  "/students",
+  authenticationMiddleware,
+  authorizationMiddleware.accessByAdminAndStaff,
+  studentsController.getStudents
+);
+studentsRouter.get(
+  "/students/:id",
+  validateStudentsData.sanitizeRequestParam,
+  authenticationMiddleware,
+  authorizationMiddleware.accessByAdminAndStaff,
+  studentsController.getStudentByID
+);
+studentsRouter.delete(
+  "/students/:id",
+  validateStudentsData.sanitizeRequestParam,
+  authenticationMiddleware,
+  authorizationMiddleware.accessByAdminAndStaff,
+  studentsController.deleteStudent
+);
 module.exports = studentsRouter;

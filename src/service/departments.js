@@ -1,4 +1,5 @@
 const departmentsRepository = require("../repository/departments");
+const studentsRepository = require("../repository/students");
 const departmentsService = {
   create: async (req, res) => {
     try {
@@ -32,7 +33,7 @@ const departmentsService = {
   deleteByID: async (req, res) => {
     try {
       const id = req.params.id;
-      deleted = await departmentsRepository.deleteByID(id);
+      const deleted = await departmentsRepository.deleteByID(id);
       if (deleted == 0) {
         return res.status(400).json({ Error: "No dept with that id" });
       }
