@@ -12,6 +12,10 @@ studentsRouter.post(
   studentsController.createStudent
 );
 studentsRouter.get("/students",
+validateStudentsData.sanitizeRequestParam,
 authenticationMiddleware,
-authorizationMiddleware.accessByAdminAndStaff,studentsController.getStudents)
+authorizationMiddleware.accessByAdminAndStaff,studentsController.getStudents);
+studentsRouter.get("/students/:id",
+authenticationMiddleware,authorizationMiddleware.accessByAdminAndStaff,
+studentsController.getStudentByID)
 module.exports = studentsRouter;

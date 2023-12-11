@@ -10,6 +10,10 @@ const studentsRepository= {
     getAllEntries: async function(){
         const searchResult = await Students.findAll();
         return searchResult
+    },
+    getByID: async function(id){
+        const searchResult = await Students.findByPk(id);
+        return searchResult
     }
 };
 module.exports = studentsRepository

@@ -17,5 +17,14 @@ const studentsService = {
     }
     catch(error){return res.status(500).json({ Error: error });}
   },
+  getByID:async(req,res)=>{
+    try{
+        const id = req.params.id
+        const searchResult = await studentsRepository.getByID(id)
+        if(!searchResult){return res.status(400).json({Error:"Student with that ID does not exist"})}
+        res.status(200).json({Success:searchResult})
+    }
+    catch(error){return res.status(500).json({ Error: error });}
+  }
 };
 module.exports = studentsService;
