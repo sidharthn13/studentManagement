@@ -12,6 +12,10 @@ const coursesRepository = {
     });
     return result;
   },
+  getByID:async function(id){
+    const result = await courses.findByPk(id)
+    return result;
+  },
   mapCourseToDepartment: async function (courseInstance, departmentsInstance) {
     const result = await departmentsInstance.addCourses(courseInstance, {
       through: "DepartmentsCourses",
