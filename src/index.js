@@ -6,19 +6,21 @@ const loginRouter= require("./routes/login.js")
 const usersRouter = require("./routes/users.js")
 const departmentsRouter = require("./routes/departments.js")
 const coursesRouter = require("./routes/courses.js")
+const studentsRouter= require("./routes/students.js")
 
 const roles = require("./models/roles.js")
 const users = require("./models/users.js")
 const students = require("./models/students.js")
 const courses = require("./models/courses.js")
 const departments = require("./models/departments.js");
-const scores = require("./models/scores.js")
+const scores = require("./models/scores.js");
 
 app.use("/v1", rolesSampleRouter);
 app.use("/v1", loginRouter);
 app.use("/v1", usersRouter);
 app.use("/v1",departmentsRouter)
 app.use("/v1",coursesRouter)
+app.use("/v1",studentsRouter)
 
 app.listen(3000, async() => {
   // console.log("Server listening at port 3000");
