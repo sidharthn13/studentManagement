@@ -31,4 +31,12 @@ studentsRouter.delete(
   authorizationMiddleware.accessByAdminAndStaff,
   studentsController.deleteStudent
 );
+studentsRouter.put(
+    "/students/:id",
+    validateStudentsData.validateInputFields,
+    validateStudentsData.sanitizeRequestParam,
+    authenticationMiddleware,
+    authorizationMiddleware.updateByAdminAndStaff,
+    studentsController.updateStudent
+)
 module.exports = studentsRouter;

@@ -47,6 +47,15 @@ accessByAdminAndStaff:(req,res,next)=>{
     return res.end("this user is not authorized to perform the action");
   }
   next()
+},
+updateByAdminAndStaff: (req,res,next)=>{
+  const token = req.headers.cookie.split("=")[1];
+  const decodedToken = jwtDecode(token);
+  if (decodedToken.role != 1 && decodedToken.role != 2) {
+    return res.end("this user is not authorized to perform the action");
+  }
+  req.body.updatedBy = decodedToken.userID;
+  next()
 }
 }
 module.exports = authorizationMiddleware;
