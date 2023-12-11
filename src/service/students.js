@@ -10,5 +10,12 @@ const studentsService = {
     return res.status(200).json({Success:"student created"});}
     catch(error){return res.status(500).json({ Error: error });}
   },
+  getAll: async(req,res)=>{
+    try{
+        const searchResult = await studentsRepository.getAllEntries();
+        return res.status(200).json({"Students":searchResult})
+    }
+    catch(error){return res.status(500).json({ Error: error });}
+  },
 };
 module.exports = studentsService;

@@ -7,5 +7,9 @@ const studentsRepository= {
           });
           return searchResult;
     },
+    getAllEntries: async function(){
+        const searchResult = await Students.findAll();
+        return searchResult
+    }
 };
 module.exports = studentsRepository
