@@ -1,7 +1,4 @@
 const sequelize = require("../config/database");
-const Students = require("../models/students");
-const Scores = require("../models/scores");
-const DepartmentsCourses = sequelize.models.DepartmentsCourses;
 const performanceReportRepository = {
   getPerformanceReport: async function () {
     const joinQuery = `
