@@ -5,15 +5,14 @@ const scoresService = {
     addScore:async(req,res)=>{
         try{
             const data = req.body;
-            // const courseID = data.courseID
-            // const studentID = data.studentID
-            // const score = data.score
             const studentData = await scoresRepository.findStudentData(data.studentID)
             const departmentID = studentData.department
-            const departmentInstance = await departmentsRepository.getByID(departmentID)
-            const courseInstance = await coursesRepository.getByID(data.courseID)
-            const getCourseFromDepartment = scoresRepository.
-
+            const courseInDepartment = await scoresRepository.getCourseIfBelongsToDepartment(
+                departmentID,data.courseID);
+            console.log(courseInDepartment)
+            if(!courseInDepartment){return res.status(400).json({Error:"Student is not enrolled in this course"})}
+            const scoreAdded = await scoresRepository.addScore(data)   
+            return res.status(200).json({Success: "Score added to database"}) 
         }
         catch(error){
             return res.status(500).json({Error:error});

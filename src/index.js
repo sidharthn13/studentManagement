@@ -7,6 +7,7 @@ const usersRouter = require("./routes/users.js")
 const departmentsRouter = require("./routes/departments.js")
 const coursesRouter = require("./routes/courses.js")
 const studentsRouter= require("./routes/students.js")
+const scoresRouter = require("./routes/scores.js")
 
 const roles = require("./models/roles.js")
 const users = require("./models/users.js")
@@ -21,6 +22,7 @@ app.use("/v1", usersRouter);
 app.use("/v1",departmentsRouter)
 app.use("/v1",coursesRouter)
 app.use("/v1",studentsRouter)
+app.use("/v1",scoresRouter)
 
 app.listen(3000, async() => {
   // console.log("Server listening at port 3000");
@@ -32,7 +34,7 @@ app.listen(3000, async() => {
 
   await sequelize.sync();
   // await sequelize.drop()
-  
+  // del()
   // sequelize.sync().then(console.log("all tables created"));
   // generate_rows()
 });
@@ -42,21 +44,6 @@ app.listen(3000, async() => {
 //function to insert seed data
 
 // async function generate_rows() {
-//   const departmentData = [
-//     {
-//       departmentName:"cs",
-//       createdBy:"gtm",
-//       updatedBy:"sid"
-//     },
-//   ];
-//   const studentData= [
-//     {
-//       name:"atul",
-//       department:1,
-//       createdBy:"staff",  
-//       updatedBy:"staff"
-//     }
-//   ];
 //   const rolesData = [
 //     {
 //       role: "admin"
@@ -73,15 +60,16 @@ app.listen(3000, async() => {
 //       role: 1
 //     }
 //   ]
-
 //   try {
-//     const department = await departments.bulkCreate(departmentData);
-//     const student = await students.bulkCreate(studentData);
 //     const role = await roles.bulkCreate(rolesData)
 //     const user = await users.bulkCreate(usersData)
 //   } catch (error) {
 //     console.log(`warning, error: ${error}`);
 //   }
+// }
+
+// function del(num){
+//   scores.destroy({where:{courseID:num}})
 // }
 
 
