@@ -12,8 +12,8 @@ const coursesRepository = {
     });
     return result;
   },
-  getByID:async function(id){
-    const result = await courses.findByPk(id)
+  getByID: async function (id) {
+    const result = await courses.findByPk(id);
     return result;
   },
   mapCourseToDepartment: async function (courseInstance, departmentsInstance) {

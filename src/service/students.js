@@ -48,17 +48,18 @@ const studentsService = {
       return res.status(500).json({ Error: error });
     }
   },
-  updateByID: async (req,res)=>{
-    try{
-        const id = req.params.id;
-        const newData = req.body;
-        const updated = await studentsRepository.updateByID(id, newData);
-        if (updated == 0) {
-            return res.status(400).json({ Error: "No student with that id" });
-          }
-        return res.status(200).json({ Success: `student with id ${id} updated` });
+  updateByID: async (req, res) => {
+    try {
+      const id = req.params.id;
+      const newData = req.body;
+      const updated = await studentsRepository.updateByID(id, newData);
+      if (updated == 0) {
+        return res.status(400).json({ Error: "No student with that id" });
+      }
+      return res.status(200).json({ Success: `student with id ${id} updated` });
+    } catch (error) {
+      return res.status(500).json({ Error: error });
     }
-    catch(error){return res.status(500).json({ Error: error });}
-  }
+  },
 };
 module.exports = studentsService;

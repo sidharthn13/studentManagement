@@ -19,11 +19,11 @@ const studentsRepository = {
     const result = await Students.destroy({ where: { id: id } });
     return result;
   },
-  updateByID: async function(id,newData){
+  updateByID: async function (id, newData) {
     const updated = await Students.update(newData, {
-        where: { id: id },
-      });
-      return updated;
-  }
+      where: { id: id },
+    });
+    return updated;
+  },
 };
 module.exports = studentsRepository;

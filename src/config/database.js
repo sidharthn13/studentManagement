@@ -1,6 +1,8 @@
-const  {Sequelize}  = require("sequelize");
+const { Sequelize } = require("sequelize");
 const dotenv = require("dotenv");
-dotenv.config({ path: "/home/sidharth/Git-Commits/Student-Management/studentManagement/.env" });
+dotenv.config({
+  path: "/home/sidharth/Git-Commits/Student-Management/studentManagement/.env",
+});
 const sequelize = new Sequelize(
   process.env.DB_NAME,
   process.env.DB_USER_NAME,

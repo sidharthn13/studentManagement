@@ -1,5 +1,5 @@
-const coursesService = require("../service/courses")
+const coursesService = require("../service/courses");
 const coursesController = {
-    createCourse:coursesService.create
+  createCourse: coursesService.create,
 };
-module.exports = coursesController
+module.exports = coursesController;

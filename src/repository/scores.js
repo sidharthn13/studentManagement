@@ -22,11 +22,11 @@ const scoresRepository = {
     });
     return result;
   },
-  updateScore: async function(data){
+  updateScore: async function (data) {
     const result = await Scores.update(data, {
-        where: { courseID: data.courseID , studentID: data.studentID},
-      });
-    return result 
-  }
+      where: { courseID: data.courseID, studentID: data.studentID },
+    });
+    return result;
+  },
 };
 module.exports = scoresRepository;

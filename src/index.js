@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
 const sequelize = require("./config/database.js")
-const { rolesSampleRouter } = require("./routes/rolesSample.js");
 const loginRouter= require("./routes/login.js")
 const usersRouter = require("./routes/users.js")
 const departmentsRouter = require("./routes/departments.js")
@@ -16,7 +15,6 @@ const courses = require("./models/courses.js")
 const departments = require("./models/departments.js");
 const scores = require("./models/scores.js");
 
-app.use("/v1", rolesSampleRouter);
 app.use("/v1", loginRouter);
 app.use("/v1", usersRouter);
 app.use("/v1",departmentsRouter)
