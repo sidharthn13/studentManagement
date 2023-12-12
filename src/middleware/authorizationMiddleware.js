@@ -40,6 +40,16 @@ createByStaff:(req, res, next) => {
   req.body.createdBy = decodedToken.userID;
   next();
 },
+updateByStaff:
+  (req, res, next) => {
+    const token = req.headers.cookie.split("=")[1];
+    const decodedToken = jwtDecode(token);
+    if (decodedToken.role != 2) {
+      return res.end("this user is not authorized to perform the action");
+    }
+    req.body.updatedBy = decodedToken.userID;
+    next()
+},
 accessByAdminAndStaff:(req,res,next)=>{
   const token = req.headers.cookie.split("=")[1];
   const decodedToken = jwtDecode(token);

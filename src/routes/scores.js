@@ -9,4 +9,9 @@ scoresRouter.post("/scores",
     authenticationMiddleware,
     authorizationMiddleware.createByStaff,
     scoresController.addScore);
+scoresRouter.put("/scores",
+validateScoresData.validateInputFields,
+    authenticationMiddleware,
+    authorizationMiddleware.updateByStaff,
+    scoresController.updateScore);
 module.exports = scoresRouter;
